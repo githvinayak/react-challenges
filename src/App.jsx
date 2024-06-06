@@ -3,15 +3,16 @@
 // import UndoCounter from "./components/UndoCounter";
 // import ShoppingList from "./components/ShoppingList"
 // import MultiStepForm from "./components/MultiStepForm"
+// import Carousel from "./components/Carousel"
 
-import Carousel from "./components/Carousel"
+import Otp from "./components/Otp";
 
 const App = () => {
   return (
     <>
-    <Carousel/>
+      <Otp />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
