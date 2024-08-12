@@ -8,6 +8,9 @@ export default {
     extend: {
       opacity: {
         '54': '.54',
+      },
+      boxShadow:{
+        'dark':"5px 5px 0px rgb(147 51 234) "
       }
     },
   },

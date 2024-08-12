@@ -1,83 +1,78 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Calculator = () => {
-  const [principle, setPrinciple] = useState(0);
-  const [interest, setInterest] = useState(0);
-  const [years, setYears] = useState(0);
-  const [emii, setEmi] = useState(0);
-
-  const handleOnChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    if( name === "principle"){
-        setPrinciple(value);
-    }else if( name === "interest"){
-        setInterest(value);
-    }else{
-        setYears(value);
+  const keys = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "+",
+    "-",
+    "/",
+    "*",
+    "=",
+    "C",
+    ".",
+  ];
+  const [value, setValue] = useState("");
+  const handleChnage = (e) => {
+    setValue(e.target.value);
+  };
+  const handleClick = (e) => {
+    const id = e.target.id;
+    if (id === "C") {
+      setValue("");
+    } else if (id === "=") {
+      handleSubmit();
+    } else {
+      setValue((val) => val + id);
     }
   };
-   
-  const calculateEmi=()=>{
-    if(principle && interest && years){
-      const mothlyInterests = interest/12/100;
-      const monthlyTenure = years*12;
-      let numerator = principle * mothlyInterests * Math.pow( 1 + mothlyInterests,monthlyTenure);
-      let denominator = Math.pow( 1 + mothlyInterests,monthlyTenure) - 1
-      let emi =Math.round(numerator/denominator);
-      setEmi(emi)
+
+  const handleSubmit = (e) => {
+    e?.preventDefault();
+    try {
+      const result = eval(value);
+      setValue(result);
+    } catch (error) {
+      alert("Invalid expression");
     }
-  }
-
-  useEffect(()=>{
-    calculateEmi();
-  },[principle,interest,years]);
-
-  console.log(principle);
-  console.log(interest);
-  console.log(years);
+  };
   return (
     <>
-      <div className='flex justify-center mx-auto items-center h-screen bg-[#211432]'>
-        <div className="w-1/3 bg-[#342844] flex flex-col py-3 gap-3 justify-center rounded-lg items-center ">
-          <h1 className='text-[25px] font-bold text-center py-6 text-white'>
-            Mortage Calculator
-          </h1>
-          <form className="w-2/3 flex flex-col gap-4">
-            <div className='flex flex-col gap-2 px-4'>
-              <label className="text-[#683CE4] text-[20px] font-semibold">Principal</label>
-              <input
-                onChange={handleOnChange}
-                placeholder='principle'
-                name='principle'
-                type='text'
-                className="bg-[#404059] px-4 py-2 rounded-xl"
-              />
-            </div>
-            <div className='flex flex-col gap-2 px-4'>
-              <label className="text-[#683CE4] text-[20px] font-semibold">Interest</label>
-              <input
-                onChange={handleOnChange}
-                placeholder='interest'
-                name='interest'
-                type='text'
-                className="bg-[#404059] px-4 py-2 rounded-xl"
-              />
-            </div>
-            <div className='flex flex-col gap-2 px-4'>
-              <label className="text-[#683CE4] text-[20px] font-semibold">Years</label>
-              <input
-                onChange={handleOnChange}
-                placeholder='years'
-                name='years'
-                type='text'
-                className="bg-[#404059] px-4 py-2 rounded-xl"
-              />
-            </div>
-          </form>
-          <h2 className="text-[#683CE4] text-[]17px font-semibold py-6">Your EMI is : {emii} </h2>
+      <main className=' h-screen w-full center flex-col gap-12'>
+        <h1 className=' text-4xl font-bold'>Calculator</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            onChange={handleChnage}
+            value={value}
+            className=' border-2 border-gray-300 text-xl focus:outline-none px-4 py-2'
+            type='text'
+            name=''
+            id=''
+          />
+        </form>
+        <div
+          onClick={handleClick}
+          className=' grid grid-cols-4 w-[50vh] h-[50vh] gap-4'
+        >
+          {keys.map((key, index) => (
+            <button
+              className='bg-purple-400 text-xl font-medium hover:shadow-dark transition-all outline-none'
+              id={key}
+              key={index}
+            >
+              {key}
+            </button>
+          ))}
         </div>
-      </div>
+      </main>
     </>
   );
 };

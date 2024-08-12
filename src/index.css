@@ -14,3 +14,9 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+@layer components{
+  .center {
+    @apply flex justify-center  items-center
+  }
+}

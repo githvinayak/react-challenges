@@ -4,13 +4,16 @@
 // import ShoppingList from "./components/ShoppingList"
 // import MultiStepForm from "./components/MultiStepForm"
 // import Carousel from "./components/Carousel"
+// import Otp from "./components/Otp";
+// import Calculator from "./components/Calculator";
+// import { SearchBar } from "./components/SearchBar";
 
-import Otp from "./components/Otp";
+import Rating from "./components/Rating";
 
 const App = () => {
   return (
     <>
-      <Otp />
+    <Rating/>
     </>
   );
 };
