@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -15,8 +15,18 @@ body{
   align-items: center;
 }
 
-@layer components{
+@layer components {
   .center {
-    @apply flex justify-center  items-center
+    @apply flex justify-center  items-center;
   }
 }
+/* 
+.show {
+  font-size: 1.125rem;
+}
+.hide {
+  font-size: 0;
+}
+.remove {
+  visibility: hidden;
+} */

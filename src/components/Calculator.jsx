@@ -36,7 +36,7 @@ const Calculator = () => {
   };
 
   const handleSubmit = (e) => {
-    e?.preventDefault();
+    e.preventDefault();
     try {
       const result = eval(value);
       setValue(result);

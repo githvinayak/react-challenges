@@ -25,7 +25,7 @@ const Accordian = () => {
   ];
   return (
     <>
-      <main className="h-screen w-full flex flex-col justify-center  bg-slate-800 items-center">
+      <main className="h-screen w-screen flex flex-col justify-center  bg-slate-800 items-center">
         <h1 className="text-[35px] font-bold py-4 text-white text-center">Accordian</h1>
       <div className=" gap-3  flex flex-col w-1/2 px-16 py-10 rounded-2xl bg-slate-700">
         {data.map((item,idx) => (
